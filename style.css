@@ -32,6 +32,7 @@ body {
     radial-gradient(circle at top right, rgba(45, 59, 115, 0.16), transparent 24%),
     linear-gradient(180deg, #fbfcff 0%, #f4f7fc 100%);
   color: var(--ink);
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
 a {
@@ -105,6 +106,7 @@ footer {
 
 .nav-text {
   display: flex;
+  align-items: center;
   gap: 2rem;
   padding: 0 1rem;
   font-size: 24px;
@@ -121,6 +123,28 @@ footer {
 .nav-text div a:hover {
   color: var(--accent);
   font-weight: 700;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid rgba(27, 37, 75, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--navy);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(27, 37, 75, 0.08);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(232, 106, 91, 0.5);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .hero-section {
@@ -190,7 +214,7 @@ footer {
   width: fit-content;
   padding: 0.8rem 2.3rem;
   border: solid 3px transparent;
-  border-radius: 0;
+  border-radius: 999px;
   background-color: var(--accent);
   color: white;
   text-decoration: none;
@@ -198,6 +222,7 @@ footer {
   font-weight: 500;
   position: relative;
   z-index: 1;
+  overflow: hidden;
   box-shadow: 5px 5px 7px 0 #0000003f;
   transition: all 0.5s;
   cursor: pointer;
@@ -207,6 +232,7 @@ footer {
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background-color: #fff;
   z-index: -1;
   transform: scaleX(0);
@@ -638,26 +664,35 @@ footer {
   bottom: 1.5rem;
   font-size: clamp(4rem, 11vw, 8rem);
   font-weight: 800;
-  color: rgba(27, 37, 75, 0.08);
+  color: rgba(27, 37, 75, 0.12);
   text-transform: uppercase;
   user-select: none;
+  padding: 0.2rem 1rem 0.35rem;
+  border: 1px solid rgba(86, 108, 215, 0.1);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(239, 243, 255, 0.08));
+  box-shadow: 0 14px 30px rgba(60, 83, 182, 0.06);
+  backdrop-filter: blur(6px);
 }
 
 .blob-style {
   position: absolute;
-  inset: 2rem auto auto 40%;
-  width: min(420px, 70%);
-  opacity: 0.18;
+  top: 50%;
+  left: 50%;
+  width: min(420px, 72%);
+  opacity: 0.16;
+  transform: translate(-50%, -50%);
   animation: blobAnimate 10s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes blobAnimate {
   0%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   50% {
-    transform: translateY(18px) rotate(8deg);
+    transform: translate(-50%, -47%) rotate(8deg);
   }
 }
 
@@ -839,6 +874,132 @@ footer {
 
 footer .icon {
   color: rgba(255, 255, 255, 0.92);
+}
+
+body.dark-theme {
+  color: #e8eefc;
+  background:
+    radial-gradient(circle at top left, rgba(201, 119, 62, 0.2), transparent 24%),
+    radial-gradient(circle at top right, rgba(108, 92, 76, 0.18), transparent 22%),
+    linear-gradient(180deg, #161312 0%, #1e1a18 48%, #26211f 100%);
+}
+
+body.dark-theme .gradient::before {
+  background:
+    linear-gradient(135deg, rgba(18, 15, 14, 0.8), rgba(30, 25, 22, 0.56)),
+    radial-gradient(circle at 20% 20%, rgba(201, 119, 62, 0.1), transparent 18%);
+}
+
+body.dark-theme .logo-text,
+body.dark-theme .hero-section-heading,
+body.dark-theme .hero-section-sub-heading,
+body.dark-theme .skills-heading,
+body.dark-theme .page-header {
+  color: #f3f6ff;
+}
+
+body.dark-theme .nav-text div a,
+body.dark-theme .hero-section-description,
+body.dark-theme .skills-subheading p,
+body.dark-theme .contact-subheading {
+  color: rgba(227, 234, 252, 0.86);
+}
+
+body.dark-theme .theme-toggle {
+  background: rgba(39, 31, 28, 0.9);
+  border-color: rgba(201, 119, 62, 0.22);
+  color: #f0f4ff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+body.dark-theme .faded-text,
+body.dark-theme .skills-fadded-text {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .skills-fadded-text {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+body.dark-theme .project-section {
+  background:
+    radial-gradient(circle at top left, rgba(201, 119, 62, 0.1), transparent 22%),
+    linear-gradient(180deg, rgba(28, 23, 21, 0.98), rgba(22, 19, 18, 0.98));
+}
+
+body.dark-theme .page-header {
+  border-color: rgba(232, 106, 91, 0.76);
+  background:
+    radial-gradient(circle at top left, rgba(201, 119, 62, 0.16), transparent 30%),
+    linear-gradient(135deg, rgba(43, 27, 20, 0.88), rgba(63, 39, 30, 0.76));
+}
+
+body.dark-theme .skills-heading {
+  border-color: rgba(232, 106, 91, 0.76);
+  background:
+    radial-gradient(circle at top left, rgba(201, 119, 62, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(43, 27, 20, 0.88), rgba(63, 39, 30, 0.76));
+}
+
+body.dark-theme .skills-subheading {
+  border-color: rgba(154, 126, 98, 0.72);
+  background:
+    radial-gradient(circle at top left, rgba(154, 126, 98, 0.12), transparent 30%),
+    linear-gradient(135deg, rgba(36, 30, 27, 0.94), rgba(28, 24, 22, 0.84));
+  box-shadow: 0 24px 48px rgba(9, 7, 6, 0.35);
+}
+
+body.dark-theme .skills-container-right {
+  border-color: rgba(86, 150, 108, 0.9);
+  background:
+    radial-gradient(circle at top left, rgba(86, 150, 108, 0.14), transparent 28%),
+    linear-gradient(135deg, rgba(21, 33, 25, 0.95), rgba(25, 40, 30, 0.82));
+  box-shadow: 0 24px 48px rgba(4, 18, 12, 0.35);
+}
+
+body.dark-theme .skills-logo {
+  background: rgba(33, 28, 26, 0.94);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
+}
+
+body.dark-theme .contactus-form-container {
+  background:
+    radial-gradient(circle at top right, rgba(201, 119, 62, 0.1), transparent 20%),
+    linear-gradient(180deg, #211c19 0%, #191614 100%);
+}
+
+body.dark-theme .contact-panel {
+  border-color: rgba(255, 140, 27, 0.75);
+  background:
+    radial-gradient(circle at 18% 28%, rgba(201, 119, 62, 0.14), transparent 22%),
+    linear-gradient(135deg, rgba(39, 30, 26, 0.8), rgba(27, 22, 20, 0.68));
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-theme .contact-us-heading {
+  color: #ffb45d;
+}
+
+body.dark-theme .formfield {
+  background: rgba(39, 31, 28, 0.72);
+  color: #eef3ff;
+  border-color: rgba(255, 140, 27, 0.24);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+body.dark-theme .formfield::placeholder {
+  color: rgba(214, 223, 248, 0.72);
+}
+
+body.dark-theme .formfield:hover,
+body.dark-theme .formfield:focus {
+  background: rgba(49, 39, 35, 0.88);
+}
+
+body.dark-theme footer {
+  background: linear-gradient(135deg, #181312, #2a211f);
 }
 
 @media (max-width: 1024px) {
