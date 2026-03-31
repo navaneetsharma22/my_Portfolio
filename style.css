@@ -264,6 +264,8 @@ footer {
 }
 
 .user-image {
+  position: relative;
+  z-index: 2;
   padding: 2.5rem;
   border-radius: 10px;
   filter: grayscale(1);
@@ -273,7 +275,10 @@ footer {
 
 .user-image img {
   width: 300px;
-  z-index: -9;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
   display: block;
 }
 
@@ -1018,10 +1023,15 @@ body.dark-theme footer {
 
   .hero-section {
     gap: 2rem;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-section-right {
     min-height: 420px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .skills-container {
@@ -1053,6 +1063,13 @@ body.dark-theme footer {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.9rem 1.2rem;
+    padding: 0;
+    font-size: 1.05rem;
+  }
+
+  .theme-toggle {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.9rem;
   }
 
   .hero-section {
@@ -1064,12 +1081,28 @@ body.dark-theme footer {
     padding: 1.6rem;
   }
 
+  .hero-section-description {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .hero-button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-button-group .btn-pink {
+    width: 100%;
+  }
+
   .hero-section-right {
     min-height: 340px;
+    padding-inline: 1rem;
   }
 
   .user-image {
     width: min(320px, 100%);
+    padding: 1.5rem;
   }
 
   .icons img {
@@ -1125,8 +1158,35 @@ body.dark-theme footer {
     padding: 1rem;
   }
 
+  .nav-logo img {
+    width: 56px;
+    height: 56px;
+  }
+
   .logo-text {
     font-size: 1.05rem;
+  }
+
+  .nav-text {
+    gap: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  .theme-toggle span {
+    display: none;
+  }
+
+  .hero-section-heading {
+    font-size: 1.6rem;
+  }
+
+  .hero-section-sub-heading {
+    font-size: 2.1rem;
+    line-height: 1.15;
+  }
+
+  .faded-text {
+    display: none;
   }
 
   .hero-section-description,
